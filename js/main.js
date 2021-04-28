@@ -9,27 +9,40 @@ var app = new Vue({
     mounted(){
             axios
                 .get('http://localhost:81/php-ajax-dischi/server.php')
-                .then((discList)=>{
+                .then((albumList)=>{
 
 
                     // // crea lista album-------
-                    this.albumList = discList.data;
-                    console.log(discList.data);
+                    this.albumList = albumList.data;
+                    console.log(albumList.data);
 
                     // // estrai artista da lista album---------
                     for( let i=0;i<this.albumList.length;i++){
                         if(!this.authorList.includes(this.albumList[i].author))
                         this.authorList.push(this.albumList[i].author)
                     };
-                    console.log(this.authorList)
+                    this.authorList=this.authorList.sort()
                 })
     },
     methods:{
         onFilterChange(){
-            console.log(this.activeAuthor)
+            // Bonus: Attraverso un’altra chiamata AXIOS, filtrare gli album per artista 
+            console.log(this.activeAuthor);
+            axios
+                .get('http://localhost:81/php-ajax-dischi/server.php')
+                .then((albumList)=>{
+
+                    this.albumList =[];
+                    if(this.activeAuthor == "all"){
+                        this.albumList = albumList.data;
+                    }else{
+                        this.albumList= albumList.data.filter((item)=>{
+                            return item.author == this.activeAuthor
+                        })
+                    }
+                })
         }
     }
 })
 
-// Bonus: Attraverso un’altra chiamata AXIOS, filtrare gli album per artista (modificato) 
 

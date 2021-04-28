@@ -30,7 +30,7 @@
             <div id="select_section">
                 <label for="author_filter"></label>
                 <select name="author_filter" id="author_filter" @change="onFilterChange()" v-model="activeAuthor">
-                    <option value="">All</option>
+                    <option value="all">All</option>
                     <option v-for="(author, index) in authorList" :value="authorList[index]">{{authorList[index]}}</option>
                 </select>
             </div>
