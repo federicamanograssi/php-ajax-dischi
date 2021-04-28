@@ -21,7 +21,7 @@ var app = new Vue({
                         if(!this.authorList.includes(this.albumList[i].author))
                         this.authorList.push(this.albumList[i].author)
                     };
-                    this.authorList=this.authorList.sort()
+                    this.authorList.sort()
                 })
     },
     methods:{
