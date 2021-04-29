@@ -8,7 +8,8 @@ var app = new Vue({
     },
     mounted(){
             axios
-                .get('http://localhost:81/php-ajax-dischi/server.php')
+                .get(window.location.protocol+'//'+window.location.hostname+':'+window.location.port+'/php-ajax-dischi/server.php')
+                // .get('http://localhost:81/php-ajax-dischi/server.php')
                 .then((albumList)=>{
 
 
