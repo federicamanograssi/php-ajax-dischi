@@ -43,13 +43,11 @@ var app = new Vue({
                 })
         },
         onFilterChange(){
-            // axios
-            // .get(window.location.protocol +'//'+ window.location.hostname +':'+ window.location.port + '/php-ajax-dischi/server.php?filterByAuthor='+this.activeAuthor)
-            // .then((filteredList)=>{
-            //     console.log('preso')
-            //     this.albumList = filteredList.data;
-            // })       
-            // }
+            axios
+            .get(window.location.protocol +'//'+ window.location.hostname +':'+ window.location.port + '/php-ajax-dischi/server.php?findList=filterByAuthor&currentAuthor='+this.activeAuthor)
+            .then((filteredList)=>{
+                this.albumList = filteredList.data;
+            })       
             // Bonus: Attraverso un’altra chiamata AXIOS, filtrare gli album per artista 
             // console.log(this.activeAuthor);
             // axios

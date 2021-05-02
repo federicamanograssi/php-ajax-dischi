@@ -21,6 +21,20 @@ switch($findList){
         echo json_encode($authors);
         break;
 
+    case 'filterByAuthor':
+        $currentAuthor = $_GET['currentAuthor'];
+        $filteredList =[];
+        if($currentAuthor=='All'){
+            $filteredList=$database;
+        } else {
+            foreach ($database as $album) {
+                if(!$currentAuthor=="" && $album['author']==$currentAuthor){
+                    $filteredList[]=$album;
+                }
+            }
+        };
+        echo json_encode($filteredList);
+        break;
 };
 
 
